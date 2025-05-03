@@ -1,7 +1,5 @@
 package com.algaworks.algasensors.device.management.domain.model;
 
-import com.algaworks.algasensors.device.management.api.model.SensorId;
-import io.hypersistence.tsid.TSID;
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

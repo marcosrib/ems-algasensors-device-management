@@ -1,6 +1,7 @@
 package com.algaworks.algasensors.device.management.api.controller;
 
-import com.algaworks.algasensors.device.management.api.model.SensorId;
+import com.algaworks.algasensors.device.management.api.model.SensorOutput;
+import com.algaworks.algasensors.device.management.domain.model.SensorId;
 import com.algaworks.algasensors.device.management.api.model.SensorInput;
 import com.algaworks.algasensors.device.management.common.IdGenerator;
 import com.algaworks.algasensors.device.management.domain.model.Sensor;
@@ -20,7 +21,7 @@ public class SensorController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Sensor create(@RequestBody SensorInput input) {
+    public SensorOutput create(@RequestBody SensorInput input) {
 
      var sensor = Sensor
              .builder()
@@ -32,6 +33,6 @@ public class SensorController {
              .model(input.getModel())
              .enabled(false)
              .build();
-     return sensorRepository.saveAndFlush(sensor);
+     return SensorOutput.from(sensorRepository.saveAndFlush(sensor));
     }
 }
